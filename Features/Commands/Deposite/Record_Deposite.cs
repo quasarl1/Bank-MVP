@@ -1,0 +1,13 @@
+using System;
+using System.IO;
+using SystemBank.Models;
+using SystemBank.Middleware;
+using SystemBank;
+using SystemBank.Data;
+using MediatR;
+using SystemBank.Generics;
+using SystemBank.Controllers;
+using Microsoft.EntityFrameworkCore;
+using SystemBank.Features;
+namespace SystemBank.Features;
+public record DepositeRecord(string AccountId, decimal Money, string type) : IRequest<BaseResponse<UserTransactionsDto>>{};
