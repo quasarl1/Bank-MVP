@@ -17,6 +17,6 @@ public class DeleteAccount
         db.accounts.RemoveRange(AccountToDelete);
         if (!AccountToDelete.Any()) throw new Exception("isn't deleted");
         await db.SaveChangesAsync();
-        return BaseResponse<IEnumerable<AccountDTO>>.Ok(Enumerable.Empty<AccountDTO>(), "accounts has been deleted");
+        return BaseResponse<IEnumerable<AccountDTO>>.Ok(Enumerable.Empty<AccountDTO>(), "accounts have been deleted");
     }
 }
