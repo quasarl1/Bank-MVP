@@ -24,7 +24,7 @@ public class CreateUserHandler: IRequestHandler<CreateUserRecord, BaseResponse<A
     public async Task<BaseResponse<AccountDTO>> Handle(CreateUserRecord request, CancellationToken token)
     {
     
-        var user = await db.users.Include(u => u.accounts).ThenInclude(u => u.Type).AsSplitQuery().FirstOrDefaultAsync(u => u.UserID == request.UserId);
+        var user = await db.users.Include(u => u.accounts).ThenInclude(u => u.Type).AsSplitQuery().FirstOrDefaultAsync(u => u.UserID == request.UserId); // ADD SELECT()
         if (user is null) throw new Exception("didn't found in database");
         if (user.accounts.Count >= 4) throw new Exception("You have > 4 accounts");
         if (!Enum.IsDefined(typeof(AccountType), request.Type)) throw new Exception("not corrently account type");
